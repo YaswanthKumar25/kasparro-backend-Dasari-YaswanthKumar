@@ -70,14 +70,14 @@ kasparro-backend-Dasari-YaswanthKumar/
 ├── requirements.txt
 └── README.md
 
+yaml
+Copy code
 
 This layout keeps everything modular and easy to maintain — consistent with Kasparro’s engineering expectations.
 
 ---
 
 ## 🔄 ETL Flow Diagram
-
-
 
 +-------------------------+
 | External API (JSON) |
@@ -104,6 +104,8 @@ v
 | /api/products/ |
 +-------------------------+
 
+yaml
+Copy code
 
 ---
 
@@ -126,29 +128,33 @@ Returns a single product.
 ### **1. Move to project directory**
 ```bash
 cd kasparro-backend-Dasari-YaswanthKumar
-
 2. Activate virtual environment
+bash
+Copy code
 .\venv\Scripts\activate
-
 3. Install dependencies
+bash
+Copy code
 pip install -r requirements.txt
-
 4. Apply migrations
+bash
+Copy code
 python manage.py makemigrations
 python manage.py migrate
-
 5. Run ETL
+bash
+Copy code
 python manage.py run_etl
-
 6. Start server
+bash
+Copy code
 python manage.py runserver
-
 7. Open APIs
+ruby
+Copy code
 http://127.0.0.1:8000/api/products/
 http://127.0.0.1:8000/api/products/1/
-
 📌 Engineering Choices
-
 Django REST Framework for clarity and rapid API development
 
 SQLite as a lightweight and simple relational DB
@@ -162,7 +168,6 @@ API design follows REST principles
 Clean, modular folder structure
 
 🚀 Future Enhancements
-
 Scheduled ETL (Celery + cron)
 
 Add authentication
@@ -173,242 +178,3 @@ Centralized logging for ETL errors
 
 Multi-source ingestion
 
-✔ Final Notes
-
-This project is structured and documented following Kasparro's expectations:
-
-Clear architecture
-
-Professional README
-
-Maintainable code
-
-Logical reasoning in design choices
-
-Thank you for reviewing my submission.
-— Dasari Yaswanth Kumar
-
-
----
-
-# ✅ Next Steps for You  
-1. Open your project folder  
-2. Create a file named `README.md`  
-3. Paste the ENTIRE text above  
-4. Save  
-5. Run these commands:
-
-```bash
-git add README.md
-git commit -m "Added final README"
-git push
-
-
-If you want, send your GitHub link and I will check if everything looks perfect for submission.
-
-You said:
-give it in code format
-ChatGPT said:
-
-Here you go bro — the entire README in pure code block format.
-Just copy → paste into your README.md file.
-No extra text, no formatting issues. ✔
-
-✅ README.md (CODE FORMAT — COPY THIS EXACTLY)
-# Kasparro Backend & ETL Assignment  
-**Author:** Dasari Yaswanth Kumar  
-**Track:** Backend & ETL Systems  
-
----
-
-## 🔍 Overview
-
-This project implements the Backend & ETL challenge assigned by Kasparro.
-
-It includes:
-
-- ETL pipeline fetching data from an external API  
-- Transforming and loading data into a relational database  
-- Exposing RESTful API endpoints to access the ingested data  
-- Search, ordering, and pagination support  
-
-The goal is to demonstrate clear engineering, modular design, and production-style thinking.
-
----
-
-## 🏗 Architecture & Design
-
-The system is divided into **three clean components**:
-
-### **1️⃣ ETL Pipeline**
-- Fetches data from: `https://fakestoreapi.com/products`
-- Parses JSON response
-- Loads data into SQLite DB
-- Uses `update_or_create()` for:
-  - Avoiding duplicates  
-  - Allowing safe multiple ETL runs  
-  - Providing basic recovery logic  
-
-### **2️⃣ Database Layer – SQLite**
-- Simple relational storage
-- Uses Django ORM
-- Suitable for assignment and local execution
-
-### **3️⃣ REST API Layer**
-Implemented using Django REST Framework:
-
-- Retrieve list of products
-- Retrieve single product
-- Search (`?search=`)  
-- Ordering (`?ordering=`)  
-- Pagination (DRF default)
-
----
-
-## 📂 Folder Structure
-
-
-
-kasparro-backend-Dasari-YaswanthKumar/
-│
-├── core/
-│ ├── settings.py
-│ └── urls.py
-│
-├── products/
-│ ├── models.py
-│ ├── serializers.py
-│ ├── views.py
-│ ├── urls.py
-│ ├── management/
-│ │ └── commands/
-│ │ └── run_etl.py
-│
-├── db.sqlite3
-├── manage.py
-├── requirements.txt
-└── README.md
-
-
-This layout keeps everything modular and easy to maintain — consistent with Kasparro’s engineering expectations.
-
----
-
-## 🔄 ETL Flow Diagram
-
-
-
-+-------------------------+
-| External API (JSON) |
-| fakestoreapi.com |
-+-----------+-------------+
-|
-v
-+-------------------------+
-| ETL Pipeline |
-| (run_etl command) |
-+-----------+-------------+
-|
-update_or_create()
-|
-v
-+-------------------------+
-| SQLite Database |
-| products_product |
-+-----------+-------------+
-|
-v
-+-------------------------+
-| Django REST API |
-| /api/products/ |
-+-------------------------+
-
-
----
-
-## 🧩 API Endpoints
-
-### **GET /api/products/**
-Returns the list of all products  
-Supports:
-- Pagination  
-- Search: `?search=laptop`  
-- Ordering: `?ordering=price`  
-
-### **GET /api/products/<id>/**
-Returns a single product.
-
----
-
-## 🛠 How to Run the Project
-
-### **1. Move to project directory**
-```bash
-cd kasparro-backend-Dasari-YaswanthKumar
-
-2. Activate virtual environment
-.\venv\Scripts\activate
-
-3. Install dependencies
-pip install -r requirements.txt
-
-4. Apply migrations
-python manage.py makemigrations
-python manage.py migrate
-
-5. Run ETL
-python manage.py run_etl
-
-6. Start server
-python manage.py runserver
-
-7. Open APIs
-http://127.0.0.1:8000/api/products/
-http://127.0.0.1:8000/api/products/1/
-
-📌 Engineering Choices
-
-Django REST Framework for clarity and rapid API development
-
-SQLite as a lightweight and simple relational DB
-
-ETL written as a Django management command
-
-update_or_create() ensures idempotency and recovery
-
-API design follows REST principles
-
-Clean, modular folder structure
-
-🚀 Future Enhancements
-
-Scheduled ETL (Celery + cron)
-
-Add authentication
-
-Add category filtering
-
-Centralized logging for ETL errors
-
-Multi-source ingestion
-
-✔ Final Notes
-
-This project is structured and documented following Kasparro's expectations:
-
-Clear architecture
-
-Professional README
-
-Maintainable code
-
-Logical reasoning in design choices
-
-Thank you for reviewing my submission.
-— Dasari Yaswanth Kumar
-
-
----
-
-If you want, I can also check your GitHub repo after you add the README.  
-Just send the link.
