@@ -48,8 +48,8 @@ Implemented using Django REST Framework:
 
 ---
 
-## 📂 Folder Structure
-
+📂 Folder Structure
+-------------------
 kasparro-backend-Dasari-YaswanthKumar/
 │
 ├── core/
@@ -70,12 +70,8 @@ kasparro-backend-Dasari-YaswanthKumar/
 ├── requirements.txt
 └── README.md
 
-This layout keeps everything modular and easy to maintain — consistent with Kasparro’s engineering expectations.
-
----
-
-## 🔄 ETL Flow Diagram
-
+🔄 ETL Flow Diagram
+-------------------
 +---------------------------+
 |   External API (JSON)     |
 |   fakestoreapi.com        |
@@ -119,32 +115,19 @@ Returns a single product.
 ## 🛠 How to Run the Project
 
 ### **1. Move to project directory**
-```bash
 cd kasparro-backend-Dasari-YaswanthKumar
 2. Activate virtual environment
-bash
-Copy code
 .\venv\Scripts\activate
 3. Install dependencies
-bash
-Copy code
 pip install -r requirements.txt
 4. Apply migrations
-bash
-Copy code
 python manage.py makemigrations
 python manage.py migrate
 5. Run ETL
-bash
-Copy code
 python manage.py run_etl
 6. Start server
-bash
-Copy code
 python manage.py runserver
 7. Open APIs
-ruby
-Copy code
 http://127.0.0.1:8000/api/products/
 http://127.0.0.1:8000/api/products/1/
 📌 Engineering Choices
