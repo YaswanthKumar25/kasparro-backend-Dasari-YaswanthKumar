@@ -38,8 +38,9 @@ kasparro-backend-Dasari-YaswanthKumar/
 ├── manage.py                  # Django manage file
 ├── requirements.txt           # Dependencies
 └── README.md                  # This file
+```
 
-##🔄 ETL Flow Diagram
+🔄 ETL Flow Diagram
 
 +---------------------------+
 |   External API (JSON)     |
