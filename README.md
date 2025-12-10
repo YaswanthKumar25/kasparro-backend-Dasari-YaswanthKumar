@@ -53,25 +53,22 @@ Implemented using Django REST Framework:
 kasparro-backend-Dasari-YaswanthKumar/
 │
 ├── core/
-│ ├── settings.py
-│ └── urls.py
+│   ├── settings.py
+│   └── urls.py
 │
 ├── products/
-│ ├── models.py
-│ ├── serializers.py
-│ ├── views.py
-│ ├── urls.py
-│ ├── management/
-│ │ └── commands/
-│ │ └── run_etl.py
+│   ├── models.py
+│   ├── serializers.py
+│   ├── views.py
+│   ├── urls.py
+│   ├── management/
+│   │   └── commands/
+│   │       └── run_etl.py
 │
 ├── db.sqlite3
 ├── manage.py
 ├── requirements.txt
 └── README.md
-
-yaml
-Copy code
 
 This layout keeps everything modular and easy to maintain — consistent with Kasparro’s engineering expectations.
 
@@ -79,35 +76,31 @@ This layout keeps everything modular and easy to maintain — consistent with Ka
 
 ## 🔄 ETL Flow Diagram
 
-+-------------------------+
-| External API (JSON) |
-| fakestoreapi.com |
-+-----------+-------------+
-|
-v
-+-------------------------+
-| ETL Pipeline |
-| (run_etl command) |
-+-----------+-------------+
-|
-update_or_create()
-|
-v
-+-------------------------+
-| SQLite Database |
-| products_product |
-+-----------+-------------+
-|
-v
-+-------------------------+
-| Django REST API |
-| /api/products/ |
-+-------------------------+
++---------------------------+
+|   External API (JSON)     |
+|   fakestoreapi.com        |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|       ETL Pipeline        |
+|   (run_etl command)       |
++-------------+-------------+
+              |
+     update_or_create()
+              |
+              v
++---------------------------+
+|     SQLite Database       |
+|     products_product      |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|     Django REST API       |
+|   /api/products/          |
++---------------------------+
 
-yaml
-Copy code
-
----
 
 ## 🧩 API Endpoints
 
