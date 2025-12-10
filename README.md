@@ -40,8 +40,8 @@ kasparro-backend-Dasari-YaswanthKumar/
 └── README.md                  # This file
 ```
 
-🔄 ETL Flow Diagram
-
+## 🔄 ETL Flow Diagram
+```
 +---------------------------+
 |   External API (JSON)     |
 |   fakestoreapi.com        |
@@ -66,3 +66,4 @@ kasparro-backend-Dasari-YaswanthKumar/
 |    Django REST API        |
 |     /api/products/        |
 +---------------------------+
+```
